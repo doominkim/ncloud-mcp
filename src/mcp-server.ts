@@ -102,6 +102,177 @@ export function createNaverCloudMcpServer(client: NaverCloudReadOnlyClient): Mcp
   )
 
   server.registerTool(
+    "ncloud_list_acg_rules",
+    withReadOnlyAnnotations({
+      title: READ_ONLY_OPERATIONS.ncloud_list_acg_rules.title,
+      description: READ_ONLY_OPERATIONS.ncloud_list_acg_rules.description,
+      inputSchema: {
+        accessControlGroupNo: z.string().min(1).describe("Access control group number."),
+        accessControlGroupRuleTypeCode: optionalString.describe("INBND or OTBND. Omit for both."),
+        regionCode: optionalString,
+      },
+    }),
+    async ({ accessControlGroupNo, accessControlGroupRuleTypeCode, regionCode }) => toText(await client.request({
+      toolName: "ncloud_list_acg_rules",
+      operation: READ_ONLY_OPERATIONS.ncloud_list_acg_rules,
+      query: { accessControlGroupNo, accessControlGroupRuleTypeCode, regionCode },
+    })),
+  )
+
+  server.registerTool(
+    "ncloud_list_network_interfaces",
+    withReadOnlyAnnotations({
+      title: READ_ONLY_OPERATIONS.ncloud_list_network_interfaces.title,
+      description: READ_ONLY_OPERATIONS.ncloud_list_network_interfaces.description,
+      inputSchema: { regionCode: optionalString, pageNo: optionalPageNo, pageSize: optionalPageSize },
+    }),
+    async ({ regionCode, pageNo, pageSize }) => toText(await client.request({
+      toolName: "ncloud_list_network_interfaces",
+      operation: READ_ONLY_OPERATIONS.ncloud_list_network_interfaces,
+      query: { regionCode, pageNo, pageSize },
+    })),
+  )
+
+  server.registerTool(
+    "ncloud_get_network_interface",
+    withReadOnlyAnnotations({
+      title: READ_ONLY_OPERATIONS.ncloud_get_network_interface.title,
+      description: READ_ONLY_OPERATIONS.ncloud_get_network_interface.description,
+      inputSchema: {
+        networkInterfaceNo: z.string().min(1).describe("Network interface number."),
+        regionCode: optionalString,
+      },
+    }),
+    async ({ networkInterfaceNo, regionCode }) => toText(await client.request({
+      toolName: "ncloud_get_network_interface",
+      operation: READ_ONLY_OPERATIONS.ncloud_get_network_interface,
+      query: { networkInterfaceNo, regionCode },
+    })),
+  )
+
+  server.registerTool(
+    "ncloud_list_network_acls",
+    withReadOnlyAnnotations({
+      title: READ_ONLY_OPERATIONS.ncloud_list_network_acls.title,
+      description: READ_ONLY_OPERATIONS.ncloud_list_network_acls.description,
+      inputSchema: { regionCode: optionalString, vpcNo: optionalString },
+    }),
+    async ({ regionCode, vpcNo }) => toText(await client.request({
+      toolName: "ncloud_list_network_acls",
+      operation: READ_ONLY_OPERATIONS.ncloud_list_network_acls,
+      query: { regionCode, vpcNo },
+    })),
+  )
+
+  server.registerTool(
+    "ncloud_list_network_acl_rules",
+    withReadOnlyAnnotations({
+      title: READ_ONLY_OPERATIONS.ncloud_list_network_acl_rules.title,
+      description: READ_ONLY_OPERATIONS.ncloud_list_network_acl_rules.description,
+      inputSchema: {
+        networkAclNo: z.string().min(1).describe("Network ACL number."),
+        regionCode: optionalString,
+      },
+    }),
+    async ({ networkAclNo, regionCode }) => toText(await client.request({
+      toolName: "ncloud_list_network_acl_rules",
+      operation: READ_ONLY_OPERATIONS.ncloud_list_network_acl_rules,
+      query: { networkAclNo, regionCode },
+    })),
+  )
+
+  server.registerTool(
+    "ncloud_list_public_ips",
+    withReadOnlyAnnotations({
+      title: READ_ONLY_OPERATIONS.ncloud_list_public_ips.title,
+      description: READ_ONLY_OPERATIONS.ncloud_list_public_ips.description,
+      inputSchema: { regionCode: optionalString, pageNo: optionalPageNo, pageSize: optionalPageSize },
+    }),
+    async ({ regionCode, pageNo, pageSize }) => toText(await client.request({
+      toolName: "ncloud_list_public_ips",
+      operation: READ_ONLY_OPERATIONS.ncloud_list_public_ips,
+      query: { regionCode, pageNo, pageSize },
+    })),
+  )
+
+  server.registerTool(
+    "ncloud_list_route_tables",
+    withReadOnlyAnnotations({
+      title: READ_ONLY_OPERATIONS.ncloud_list_route_tables.title,
+      description: READ_ONLY_OPERATIONS.ncloud_list_route_tables.description,
+      inputSchema: { regionCode: optionalString, vpcNo: optionalString },
+    }),
+    async ({ regionCode, vpcNo }) => toText(await client.request({
+      toolName: "ncloud_list_route_tables",
+      operation: READ_ONLY_OPERATIONS.ncloud_list_route_tables,
+      query: { regionCode, vpcNo },
+    })),
+  )
+
+  server.registerTool(
+    "ncloud_list_routes",
+    withReadOnlyAnnotations({
+      title: READ_ONLY_OPERATIONS.ncloud_list_routes.title,
+      description: READ_ONLY_OPERATIONS.ncloud_list_routes.description,
+      inputSchema: {
+        routeTableNo: z.string().min(1).describe("Route table number."),
+        vpcNo: optionalString,
+        regionCode: optionalString,
+      },
+    }),
+    async ({ routeTableNo, vpcNo, regionCode }) => toText(await client.request({
+      toolName: "ncloud_list_routes",
+      operation: READ_ONLY_OPERATIONS.ncloud_list_routes,
+      query: { routeTableNo, vpcNo, regionCode },
+    })),
+  )
+
+  server.registerTool(
+    "ncloud_list_route_table_subnets",
+    withReadOnlyAnnotations({
+      title: READ_ONLY_OPERATIONS.ncloud_list_route_table_subnets.title,
+      description: READ_ONLY_OPERATIONS.ncloud_list_route_table_subnets.description,
+      inputSchema: {
+        routeTableNo: z.string().min(1).describe("Route table number."),
+        regionCode: optionalString,
+      },
+    }),
+    async ({ routeTableNo, regionCode }) => toText(await client.request({
+      toolName: "ncloud_list_route_table_subnets",
+      operation: READ_ONLY_OPERATIONS.ncloud_list_route_table_subnets,
+      query: { routeTableNo, regionCode },
+    })),
+  )
+
+  server.registerTool(
+    "ncloud_list_nat_gateways",
+    withReadOnlyAnnotations({
+      title: READ_ONLY_OPERATIONS.ncloud_list_nat_gateways.title,
+      description: READ_ONLY_OPERATIONS.ncloud_list_nat_gateways.description,
+      inputSchema: { regionCode: optionalString, vpcNo: optionalString },
+    }),
+    async ({ regionCode, vpcNo }) => toText(await client.request({
+      toolName: "ncloud_list_nat_gateways",
+      operation: READ_ONLY_OPERATIONS.ncloud_list_nat_gateways,
+      query: { regionCode, vpcNo },
+    })),
+  )
+
+  server.registerTool(
+    "ncloud_list_vpc_peerings",
+    withReadOnlyAnnotations({
+      title: READ_ONLY_OPERATIONS.ncloud_list_vpc_peerings.title,
+      description: READ_ONLY_OPERATIONS.ncloud_list_vpc_peerings.description,
+      inputSchema: { regionCode: optionalString },
+    }),
+    async ({ regionCode }) => toText(await client.request({
+      toolName: "ncloud_list_vpc_peerings",
+      operation: READ_ONLY_OPERATIONS.ncloud_list_vpc_peerings,
+      query: { regionCode },
+    })),
+  )
+
+  server.registerTool(
     "ncloud_list_load_balancers",
     withReadOnlyAnnotations({
       title: READ_ONLY_OPERATIONS.ncloud_list_load_balancers.title,
