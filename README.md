@@ -1,6 +1,7 @@
 # @kimduumin/ncloud-mcp
 
 [![npm version](https://img.shields.io/npm/v/@kimduumin/ncloud-mcp.svg)](https://www.npmjs.com/package/@kimduumin/ncloud-mcp)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-doominkim%2Fncloud--mcp-181717?logo=github)](https://github.com/doominkim/ncloud-mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-22%2B-green.svg)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/)
@@ -15,6 +16,10 @@ VPC와 서브넷 구조를 정리해줘
 로드밸런서 리스너와 타겟 그룹 연결 상태 확인해줘
 외부 노출 위험이 있는 인벤토리 JSON을 점검해줘
 ```
+
+## Repository
+
+- GitHub: [https://github.com/doominkim/ncloud-mcp](https://github.com/doominkim/ncloud-mcp)
 
 ## 왜 조회 전용인가요?
 
